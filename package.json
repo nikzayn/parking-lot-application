@@ -1,8 +1,13 @@
 {
-  "name": "node-typescript-boilerplate",
+  "name": "node-typescript-simple-minimal-boilerplate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple to using, clean and minimal Node.js & TypeScript boilerplate enforcing code formatting and linting",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=12.20.1",
+    "npm": ">=3.10.0"
+  },
+  "engineStrict": true,  
   "scripts": {
     "start": "npm run build && node build/index.js",
     "dev": "nodemon",
