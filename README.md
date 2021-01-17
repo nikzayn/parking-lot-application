@@ -3,7 +3,7 @@
 ## Features
 
 - Built on TypeScript
-- Integrated with liniting using ESLint
+- Integrated with linting using ESLint
 - Code formatting with Prettier
 - Strict check on Code Quality
 - Enforced code formating on commit
