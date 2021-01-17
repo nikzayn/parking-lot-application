@@ -12,3 +12,15 @@ Hydrogen is a minimal Node Express boilerplate for building a developer friendly
 - Enforced linting before pushing code
 
 ### Work in Progress
+
+Currently Hydrogen is work in progress and a lot of features will be aded to it.
+If you wan to use it today make sure to branch out from `master` and keep a remote pointing to the `master` branch of this repo which will help you to pull the latest changes of Hydrogen to your project
+
+If you like the project please go ahead and mark ⭐ to support this project. 
+
+### Upcoming Features
+
+- [ ] Testing (Unit and Integration)
+- [ ] Dokcker container
+- [ ] Deployment
+
