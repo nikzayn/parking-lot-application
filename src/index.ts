@@ -1,5 +1,5 @@
-import 'dotenv/config'
-import { AppServer} from './app';
+import 'dotenv/config';
+import { AppServer } from './app';
 
 /** load the env */
 // dotenv.config();
