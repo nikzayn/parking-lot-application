@@ -4,6 +4,7 @@ import * as logger from 'morgan';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
+import * as path from 'path';
 
 /** import modules here */
 import database from './databases/mysql';
@@ -31,6 +32,8 @@ export class AppServer extends Server {
   public async start(port: number): Promise<void> {
     try {
       const connection = await database;
+      const entitypath: string = path.resolve(__dirname, './modules/**/*{.entity.ts}');
+      console.info({ entitypath })
 
       this.app.listen(port, async () => {
         console.info(`Server running at http://localhost:${port}`);
