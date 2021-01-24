@@ -1,13 +1,12 @@
 import { Server } from '@overnightjs/core';
-import express from 'express';
-import logger from 'morgan';
-import cors from 'cors';
-import helmet from 'helmet';
-import compression from 'compression';
+import * as express from 'express';
+import * as logger from 'morgan';
+import * as cors from 'cors';
+import * as helmet from 'helmet';
+import * as compression from 'compression';
 
 /** import modules here */
 import TodoModule from './modules/todos';
-import { sequelize } from './databases/mysql';
 
 export class AppServer extends Server {
   constructor() {
@@ -30,8 +29,7 @@ export class AppServer extends Server {
 
   public start(port: number): void {
     this.app.listen(port, async () => {
-      await sequelize.authenticate();
-      console.log('Server listening on port: ' + port);
+      console.info(`Server running at http://localhost:${port}`);
     });
   }
 }
