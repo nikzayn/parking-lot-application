@@ -56,7 +56,6 @@
       "morgan": "^1.10.0",
       "mysql2": "^2.2.5",
       "reflect-metadata": "^0.1.10",
-      "sequelize": "^6.4.0",
-      "sequelize-typescript": "^2.0.0"
+      "typeorm": "^0.2.30"
    }
 }

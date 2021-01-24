@@ -1,7 +1,10 @@
-export const SEQUELIZE_OPTIONS = {
-  host: String(process.env.SQL_READ_HOST),
+export const DB_OPTIONS = {
+  host: String(process.env.DB_HOST),
   dialect: String(process.env.DB_DIALECT),
-  port: String(process.env.SQL_READ_PORT),
+  port: String(process.env.DB_PORT),
+  username: String(process.env.DB_USERNAME),
+  password: String(process.env.DB_USERNAME),
+  database: String(process.env.DB_NAME),
   // eslint-disable-next-line no-console
   logging: process.env.LOGGING ? console.info : false,
   benchmark: true,

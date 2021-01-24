@@ -5,7 +5,7 @@ import { Controller, Get, Post } from '@overnightjs/core';
 export class TodoController {
   @Get()
   private fetch(req: Request, res: Response): any {
-    return res.status(200).json({msg: 'get_called' });
+    return res.status(200).json({ msg: 'get_called' });
   }
 
   @Post()

@@ -6,6 +6,7 @@ import * as helmet from 'helmet';
 import * as compression from 'compression';
 
 /** import modules here */
+import database from './databases/mysql';
 import TodoModule from './modules/todos';
 
 export class AppServer extends Server {
@@ -27,9 +28,15 @@ export class AppServer extends Server {
     super.addControllers([TodoModule]);
   }
 
-  public start(port: number): void {
-    this.app.listen(port, async () => {
-      console.info(`Server running at http://localhost:${port}`);
-    });
+  public async start(port: number): Promise<void> {
+    try {
+      const connection = await database;
+
+      this.app.listen(port, async () => {
+        console.info(`Server running at http://localhost:${port}`);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

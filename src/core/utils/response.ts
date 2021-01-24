@@ -15,9 +15,14 @@
  * @param {string} message the message you want to send for success/failure
  */
 
-import { Response } from "express";
+import { Response } from 'express';
 
-export default function sendResponse(res: Response, statusCode: number, data = {}, message: string): Response {
+export default function sendResponse(
+  res: Response,
+  statusCode: number,
+  data = {},
+  message: string
+): Response {
   if (typeof statusCode !== 'number') {
     throw new Error('statusCode should be a number');
   }
