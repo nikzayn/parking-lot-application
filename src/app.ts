@@ -31,17 +31,14 @@ export class AppServer extends Server {
 
   public async start(port: number): Promise<void> {
     try {
-      const connection = await database;
-      const entitypath: string = path.resolve(
-        __dirname,
-        './modules/**/*{.entity.ts}'
-      );
-      console.info({ entitypath });
-
+      /** connect to the database */
+      await database;
       this.app.listen(port, async () => {
+        // eslint-disable-next-line no-console
         console.info(`Server running at http://localhost:${port}`);
       });
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     }
   }
