@@ -1,8 +1,11 @@
-import app from './app';
+import 'reflect-metadata';
+import 'dotenv/config';
+import { AppServer } from './app';
 
-const port: number = Number(process.env.PORT) || 8080;
+/** load the env */
+// dotenv.config();
 
-app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.info(`Server started at http://localhost:${port}`);
-});
+/** initiate the app here */
+const { PORT } = process.env;
+const app = new AppServer();
+app.start(Number(PORT));

@@ -1,31 +1,44 @@
-import express, { Application, Request, Response } from 'express';
-import logger from 'morgan';
-import cors from 'cors';
-import helmet from 'helmet';
+import { Server } from '@overnightjs/core';
+import * as express from 'express';
+import * as logger from 'morgan';
+import * as cors from 'cors';
+import * as helmet from 'helmet';
+import * as compression from 'compression';
 
-const app: Application = express();
+/** import modules here */
+import database from './databases/mysql';
+import TodoModule from './modules/todos';
 
-app.disable('x-powered-by');
-app.use(
-  logger('dev', {
-    skip: () => app.get('env') === 'test'
-  })
-);
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cors());
-app.use(helmet());
+export class AppServer extends Server {
+  constructor() {
+    super();
 
-// Routes
-app.use('/', (req: Request, res: Response) => {
-  res.status(200).json({ message: 'Welcome to Hydrogen.' });
-});
+    this.app.use(
+      logger('dev', {
+        skip: () => this.app.get('env') === 'test'
+      })
+    );
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cors());
+    this.app.use(helmet());
+    this.app.use(compression());
 
-// Error handler
-app.use((err: Error, req: Request, res: Response) => {
-  res.status(500).json({
-    message: err.message
-  });
-});
+    /** define controllers */
+    super.addControllers([TodoModule]);
+  }
 
-export default app;
+  public async start(port: number): Promise<void> {
+    try {
+      /** connect to the database */
+      await database;
+      this.app.listen(port, async () => {
+        // eslint-disable-next-line no-console
+        console.info(`Server running at http://localhost:${port}`);
+      });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+  }
+}

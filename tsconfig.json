@@ -1,18 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "es5",                          
-    "module": "commonjs",                     
-    "lib": ["ES6"],
-    "types": ["node"],
-    "allowJs": true,                       
-    "checkJs": true,                       
-    "sourceMap": true,                     
-    "outDir": "dist",                        
-    "rootDir": "src",                      
-    "strict": true,
-    "noImplicitAny": true,
-    "esModuleInterop": true,               
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+   "compilerOptions": {
+      "lib": [
+         "es6"
+      ],
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./build",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true
+   }
 }
