@@ -4,7 +4,6 @@ import * as logger from 'morgan';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
-import * as path from 'path';
 
 /** import modules here */
 import database from './databases/mysql';
