@@ -10,10 +10,10 @@ export class TodoController {
   private constructor(private todoServices: TodoServices) {}
 
   public static Controllers(service: TodoServices): TodoController {
-    if (!this.instance){
+    if (!this.instance) {
       return new TodoController(service);
     }
-    return this.instance
+    return this.instance;
   }
 
   @Get()
