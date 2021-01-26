@@ -5,7 +5,17 @@ import { TodoEntity } from './todo.entity';
 
 @Controller('api/v1/todos')
 export class TodoController {
-  constructor(private todoServices: TodoServices) {}
+  private static instance: TodoController;
+
+  private constructor(private todoServices: TodoServices) {}
+
+  public static Controllers(service: TodoServices): TodoController {
+    if (!this.instance){
+      return new TodoController(service);
+    }
+    return this.instance
+  }
+
   @Get()
   public async fetch(req: Request, res: Response): Promise<Response> {
     const todos: TodoEntity[] = await this.todoServices.getAllTodos();
